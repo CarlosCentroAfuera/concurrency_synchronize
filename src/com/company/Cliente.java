@@ -11,6 +11,9 @@ public class Cliente extends Thread {
                         System.out.println("Voy a beberme un " + Main.barraDelBar.get(0));
                         Main.barraDelBar.remove(0);
                         sleep(2000);
+                    } else {
+                        Main.barraDelBar.notify();
+                        Main.barraDelBar.wait();
                     }
                 }
             }catch (InterruptedException e) {

@@ -7,6 +7,7 @@ public class Camarero extends Thread {
         while(true){
             try {
                 synchronized (Main.barraDelBar) {
+                    Main.barraDelBar.wait();
                     String cocacola = "Coca-Cola";
                     Main.barraDelBar.add(cocacola);
                     System.out.println("Voy a añadir una " + cocacola);
@@ -20,6 +21,8 @@ public class Camarero extends Thread {
                     System.out.println("Voy a añadir un " + vino);
 
                     sleep(5000);
+                    Main.barraDelBar.notify();
+
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
